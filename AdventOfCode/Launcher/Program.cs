@@ -8,7 +8,7 @@ namespace Launcher
         const string inputFileDirectory = "..\\..\\..\\..\\Year2019\\InputFiles\\";
         static void Main()
         {
-            Day1.Task2(inputFileDirectory + "Day1.txt");
+            Day2.Task2();
             Console.ReadKey();
         }
     }
