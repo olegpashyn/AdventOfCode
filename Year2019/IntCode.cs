@@ -26,8 +26,8 @@ namespace Year2019
             _input = inputNumber;
             _inProg = true;
             Process();
-        }        
-        
+        }
+
         public void continueProcess()
         {
             _inProg = true;

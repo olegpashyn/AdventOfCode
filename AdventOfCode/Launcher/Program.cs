@@ -5,13 +5,10 @@ namespace Launcher
 {
     class Program
     {
-        const string inputFilesDirectory = "..\\..\\..\\..\\Year2019\\InputFiles\\";
-        static void Main(string[] args)
+        const string inputFileDirectory = "..\\..\\..\\..\\Year2019\\InputFiles\\";
+        static void Main()
         {
-            Console.WriteLine("Launcher");
-            IntCode robot = new IntCode(inputFilesDirectory + "Day1.txt");
-            Console.WriteLine(robot.Output);
-            Class1.Run();
+            Day1.Task2(inputFileDirectory + "Day1.txt");
             Console.ReadKey();
         }
     }
