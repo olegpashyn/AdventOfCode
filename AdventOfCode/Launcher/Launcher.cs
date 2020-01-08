@@ -3,12 +3,13 @@ using Year2019;
 
 namespace Launcher
 {
-    class Program
+    internal static class Launcher
     {
         const string inputFileDirectory = "..\\..\\..\\..\\Year2019\\InputFiles\\";
-        static void Main()
+
+        private static void Main()
         {
-            Day2.Task2();
+            Day2.Task2(inputFileDirectory + "Day2.txt");
             Console.ReadKey();
         }
     }

@@ -10,34 +10,34 @@ namespace Year2019
         public bool Finished;
 
         private long _input;
-        private bool _inProg;
-        private long[] _program;
+        private bool _inProgress;
+        protected long[] _program;
         private int _offset;
         private int _pointer;
 
         public IntCode(string inputFile)
         {
             _offset = 0;
-            _program = Enumerable.ToArray(Enumerable.Select(File.ReadAllText(inputFile).Split(','), long.Parse));
+            _program = File.ReadAllText(inputFile).Split(',').Select(long.Parse).ToArray();
         }
 
-        public void getInput(long inputNumber)
+        public void GetInput(long inputNumber)
         {
             _input = inputNumber;
-            _inProg = true;
+            _inProgress = true;
             Process();
         }
 
-        public void continueProcess()
+        public void ContinueProcess()
         {
-            _inProg = true;
+            _inProgress = true;
             Process();
         }
 
         private long[] ParseQuartet(int input)
         {
             var temp = new int[4];
-            var quartet = this._program[input].ToString();
+            var quartet = _program[input].ToString();
             quartet = "0000" + quartet;
             temp[0] = int.Parse(quartet.Substring((quartet.Length - 5), 1));
             temp[1] = int.Parse(quartet.Substring((quartet.Length - 4), 1));
@@ -130,23 +130,23 @@ namespace Year2019
             return (int)input;
         }
 
-        private void getOutput(int outputNumber)
+        private void GetOutput(int outputNumber)
         {
             Output = outputNumber;
-            _inProg = false;
+            _inProgress = false;
         }
 
         private void Process()
         {
             for (var position = _pointer; position < _program.Length;)
             {
-                while (_inProg)
+                while (_inProgress)
                 {
                     var instruction = ParseQuartet(position);
                     if (instruction[0] == 99)
                     {
                         Finished = true;
-                        _inProg = false;
+                        _inProgress = false;
                         break;
                     }
 
@@ -168,7 +168,7 @@ namespace Year2019
                             break;
 
                         case 4:
-                            getOutput((int)instruction[1]);
+                            GetOutput((int)instruction[1]);
                             position += 2;
                             _pointer = position;
                             break;
