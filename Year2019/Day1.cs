@@ -7,8 +7,7 @@ namespace Year2019
 {
     public class Day1 : TaskDay
     {
-        //= 1;
-        public override string Task2(string inputFilesFolder)
+        public static string Task2(string inputFilesFolder)
         {
             var input = File.ReadLines(inputFilesFolder + "Day1.txt")
                 .Select(l => Convert.ToInt32(l))

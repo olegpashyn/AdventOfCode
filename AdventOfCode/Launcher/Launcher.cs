@@ -9,7 +9,7 @@ namespace Launcher
         private const string InputFileDirectory = "..\\..\\..\\..\\Year2019\\InputFiles\\";
         private static Dictionary<string, Action<string>> _days = new Dictionary<string, Action<string>>
         {
-            {"1", () => Day1.Task2(InputFileDirectory)},
+            {"1", (inputFilesFolder) => Day1.Task2(InputFileDirectory)},
             {"2", new Day2()},
             {"3", new Day3()},
             //{"4", new Day4()},
