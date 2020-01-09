@@ -4,7 +4,7 @@ namespace Year2019
 {
     public class Day2 : TaskDay
     {
-        public override void Task2(string inputFilesFolder)
+        public override string Task2(string inputFilesFolder)
         {
 
             const int search = 19690720;
@@ -17,10 +17,11 @@ namespace Year2019
                     parser.ContinueProcess();
                     if (parser.Output() == search)
                     {
-                        Console.WriteLine(d * 100 + e);
+                        return ((d * 100 + e).ToString());
                     }
                 }
             }
+            return null;
         }
     }
 
