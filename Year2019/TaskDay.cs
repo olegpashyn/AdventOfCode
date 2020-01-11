@@ -4,12 +4,14 @@ namespace Year2019
 {
     public class TaskDay
     {
-        public virtual string Task1(string inputFileFolder)
+        protected const string InputFileDirectory = "..\\..\\..\\..\\Year2019\\InputFiles\\";
+
+        public static string Task1()
         {
-            return "Task 1 transformed to task 2";
+            return "Task 1 transformed to task 2 or not implemented yet";
         }
 
-        public virtual string Task2(string inputFileFolder)
+        public static string Task2()
         {
             return "Not yet implemented";
         }

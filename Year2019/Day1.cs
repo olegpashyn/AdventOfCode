@@ -7,9 +7,9 @@ namespace Year2019
 {
     public class Day1 : TaskDay
     {
-        public static string Task2(string inputFilesFolder)
+        public static new string Task2()
         {
-            var input = File.ReadLines(inputFilesFolder + "Day1.txt")
+            int[] input = File.ReadLines(InputFileDirectory +  "Day1.txt")
                 .Select(l => Convert.ToInt32(l))
                 .ToArray();
 

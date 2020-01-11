@@ -4,7 +4,7 @@ namespace Year2019
 {
     public class Day2 : TaskDay
     {
-        public override string Task2(string inputFilesFolder)
+        public static new string Task2()
         {
 
             const int search = 19690720;
@@ -12,7 +12,7 @@ namespace Year2019
             {
                 for (var e = 0; e < 99; e++)
                 {
-                    var parser = new IntCodeWithAccess(inputFilesFolder + "Day1.txt");
+                    var parser = new IntCodeWithAccess(InputFileDirectory + "Day2.txt");
                     parser.SetInput(d, e);
                     parser.ContinueProcess();
                     if (parser.Output() == search)
