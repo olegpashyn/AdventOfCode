@@ -6,36 +6,35 @@ namespace Launcher
 {
     internal static class Launcher
     {
-        private static Dictionary<string, Func<string>[]> _days = new Dictionary<string, Func<string>[]>
+        private static readonly Dictionary<string, TaskDay> Days = new Dictionary<string, TaskDay>
         {
-            {"1", new Func<string>[] {() => Day1.Task1(), () => Day1.Task2(), } },
-            {"2", new Func<string>[] {() => Day2.Task1(), () => Day2.Task2(), } },
-            {"3", new Func<string>[] {() => Day3.Task1(), () => Day3.Task2(), } },
-            //{"4", new Func<string>[] {() => Day4.Task1(), () => Day4.Task2(), } },
-            //{"5", new Func<string>[] {() => Day5.Task1(), () => Day5.Task2(), } },
-            //{"6", new Func<string>[] {() => Day6.Task1(), () => Day6.Task2(), } },
-            //{"7", new Func<string>[] {() => Day7.Task1(), () => Day7.Task2(), } },
-            //{"8", new Func<string>[] {() => Day8.Task1(), () => Day8.Task2(), } },
-            //{"9", new Func<string>[] {() => Day9.Task1(), () => Day9.Task2(), } },
-            //{"10", new Func<string>[] {() => Day10.Task1(), () => Day10.Task2(), } },
-            //{"11", new Func<string>[] {() => Day11.Task1(), () => Day11.Task2(), } },
-            //{"12", new Func<string>[] {() => Day12.Task1(), () => Day12.Task2(), } },
-            //{"13", new Func<string>[] {() => Day13.Task1(), () => Day13.Task2(), } },
-            //{"14", new Func<string>[] {() => Day14.Task1(), () => Day14.Task2(), } },
-            //{"15", new Func<string>[] {() => Day15.Task1(), () => Day15.Task2(), } },
-            //{"16", new Func<string>[] {() => Day16.Task1(), () => Day16.Task2(), } },
-            //{"17", new Func<string>[] {() => Day17.Task1(), () => Day17.Task2(), } },
-            //{"18", new Func<string>[] {() => Day18.Task1(), () => Day18.Task2(), } },
-            //{"19", new Func<string>[] {() => Day19.Task1(), () => Day19.Task2(), } },
-            //{"20", new Func<string>[] {() => Day20.Task1(), () => Day20.Task2(), } },
-            //{"21", new Func<string>[] {() => Day21.Task1(), () => Day21.Task2(), } },
-            //{"22", new Func<string>[] {() => Day22.Task1(), () => Day22.Task2(), } },
-            //{"23", new Func<string>[] {() => Day23.Task1(), () => Day23.Task2(), } },
-            //{"24", new Func<string>[] {() => Day24.Task1(), () => Day24.Task2(), } },
-            //{"25", new Func<string>[] {() => Day25.Task1(), () => Day25.Task2(), } },
+            {"1", new Day1()},
+            {"2", new Day2()},
+            {"3", new Day3()},
+            //{"4", new Day4()},
+            //{"5", new Day5()},
+            //{"6", new Day6()},
+            //{"7", new Day7()},
+            //{"8", new Day8()},
+            //{"9", new Day9()},
+            //{"10", new Day10()},
+            //{"11", new Day11()},
+            //{"12", new Day12()},
+            //{"13", new Day13()},
+            //{"14", new Day14()},
+            //{"15", new Day15()},
+            //{"16", new Day16()},
+            //{"17", new Day17()},
+            //{"18", new Day18()},
+            //{"19", new Day19()},
+            //{"20", new Day20()},
+            //{"21", new Day21()},
+            //{"22", new Day22()},
+            //{"23", new Day23()},
+            //{"24", new Day24()},
+            //{"25", new Day25()},
         };
-         
-        
+
         private static void Main()
         {
             var input = "1";
@@ -43,19 +42,27 @@ namespace Launcher
             {
                 Console.WriteLine("Available advent days are:");
                 Console.WriteLine();
-                foreach (var availableDay in _days.Keys)
+                foreach (var availableDay in Days.Keys)
                 {
                     Console.Write(availableDay + ", ");
                 }
                 Console.WriteLine();
                 Console.WriteLine("Enter day number. To exit - enter 0.");
                 input = Console.ReadLine();
-                if (_days.ContainsKey(input))
+                if (Days.ContainsKey(input ?? throw new InvalidOperationException()))
                 {
-                    var day = _days[input];
+                    var day = Days[input];
                     Console.WriteLine("Enter task number (1 or 2):");
-                    var task = int.Parse(Console.ReadLine());
-                    Console.WriteLine(day[task - 1].Invoke());
+                    var task = int.Parse(Console.ReadLine() ?? throw new InvalidOperationException());
+                    switch (task)
+                    {
+                        case 1:
+                            Console.WriteLine(day.Task1());
+                            break;
+                        case 2:
+                            Console.WriteLine(day.Task2());
+                            break;
+                    }
                 }
                 else
                 {
@@ -67,6 +74,7 @@ namespace Launcher
                     Console.WriteLine("Day not found.");
                 }
                 Console.ReadKey();
+                Console.Clear();
             }
         }
     }
