@@ -4,11 +4,11 @@ namespace Year2019
 {
     public class Day2 : TaskDay
     {
-        private const string inputFileName = InputFileDirectory + "Day2.txt";
+        private const string InputFileName = InputFileDirectory + "Day2.txt";
 
         public override string Task1()
         {
-            var robot = new IntCodeWithAccess(inputFileName);
+            var robot = new IntCodeWithAccess(InputFileName);
             robot.SetInput(12, 2);
             robot.ContinueProcess();
             return robot.Output().ToString();
@@ -21,7 +21,7 @@ namespace Year2019
             {
                 for (var e = 0; e < 99; e++)
                 {
-                    var parser = new IntCodeWithAccess(inputFileName);
+                    var parser = new IntCodeWithAccess(InputFileName);
                     parser.SetInput(d, e);
                     parser.ContinueProcess();
                     if (parser.Output() == search)
