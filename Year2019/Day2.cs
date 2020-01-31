@@ -11,7 +11,7 @@ namespace Year2019
             var robot = new IntCodeWithAccess(InputFileName);
             robot.SetInput(12, 2);
             robot.ContinueProcess();
-            return robot.Output().ToString();
+            return robot.FirstCommand().ToString();
         }
 
         public override string Task2()
@@ -24,7 +24,7 @@ namespace Year2019
                     var parser = new IntCodeWithAccess(InputFileName);
                     parser.SetInput(d, e);
                     parser.ContinueProcess();
-                    if (parser.Output() == search)
+                    if (parser.FirstCommand() == search)
                     {
                         return ((d * 100 + e).ToString());
                     }
@@ -32,23 +32,5 @@ namespace Year2019
             }
             return null;
         }
-    }
-
-    internal class IntCodeWithAccess : IntCode
-    {
-        public IntCodeWithAccess(string inputFile) : base(inputFile)
-        {}
-
-        public new long Output()
-        {
-            return _program[0];
-        }
-
-        public void SetInput(int noun, int verb)
-        {
-            _program[1] = noun;
-            _program[2] = verb;
-        }
-
     }
 }
