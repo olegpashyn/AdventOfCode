@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Year2019
+﻿namespace Year2019
 {
     public class Day2 : TaskDay
     {
